@@ -3,325 +3,208 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>catering Events - catering-book.html</title>
+    <title>Add Event - Catering Event</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #501F56, #19021C);
-            color: white;
+            background: linear-gradient(113deg, #501F56, #19021C);
             min-height: 100vh;
             margin: 0;
-            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #f1f1f1;
             display: flex;
             flex-direction: column;
         }
-
         nav {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            padding: 12px 24px;
+            align-items: center;
+            padding: 15px 32px;
             background: linear-gradient(135deg, #501F56, #19021C);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+            border-bottom: 1px solid rgba(252, 220, 59, 0.25);
             position: sticky;
             top: 0;
             z-index: 99;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
         }
-
         .logo img {
-            height: 50px;
-            width: 50px;
+            height: 54px;
+            width: 54px;
+            border-radius: 12px;
             object-fit: cover;
         }
-
         nav ul {
             list-style: none;
             display: flex;
-            gap: 26px;
-            font-weight: bold;
+            gap: 28px;
             margin: 0;
             padding: 0;
-            flex-direction: row;
-            align-items: center;
-        }
-
-        nav ul li {
-            position: relative;
-            cursor: pointer;
-            font-weight: 900;
-            padding: 6px 10px;
-            font-size: 1rem;
-            transition: color .3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 17px;
-        }
-
-        nav ul li::after {
-            content: '';
-            display: block;
-            position: absolute;
-            left: 20%;
-            bottom: 2px;
-            width: 60%;
-            height: 3px;
-            background: #fcdc3b;
-            border-radius: 2px;
-            transform: scaleX(0);
-            transition: transform 0.3s;
-        }
-
-        nav ul li:hover {
-            color: #fcdc3b;
-            background: rgba(252, 220, 59, 0.08);
-        }
-
-        nav ul li:hover::after {
-            transform: scaleX(1);
-        }
-
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 25px;
-            height: 4px;
-            background: #fcdc3b;
-            border-radius: 2px;
-            transition: .4s;
-        }
-
-        @media (max-width: 700px) {
-            nav ul {
-                position: absolute;
-                top: 62px;
-                left: 0;
-                right: 0;
-                background: linear-gradient(135deg, #501F56 60%, #19021C);
-                flex-direction: column;
-                align-items: center;
-                padding: 14px 0;
-                gap: 0;
-                transition: max-height .5s;
-                max-height: 0;
-                overflow: hidden;
-                border-radius: 0 0 16px 16px;
-                box-shadow: 0 8px 22px rgba(80, 31, 86, 0.2);
-            }
-
-            nav ul.open {
-                max-height: 260px;
-                gap: 8px;
-            }
-
-            nav ul li {
-                padding: 16px;
-                font-size: 1.1rem;
-                width: 100%;
-                text-align: center;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-        }
-
-        .joi {
-            padding: 6px 20px;
-            background-color: gold;
-            color: black;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            margin-left: 10px;
-            box-shadow: 0 4px 18px #fcdc3b59;
-            letter-spacing: 1px;
-        }
-
-        h2 {
-            font-weight: 800;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            margin: 30px 0;
-        }
-
-        .event-card {
-            background: #FFD93D;
-            border-radius: 18px;
-            margin-bottom: 30px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-            display: flex;
-            align-items: stretch;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
-        }
-
-        .event-img {
-            flex: 0 0 20%;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .event-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .event-info,
-        .event-more {
-            flex: 0 0 30%;
-            padding: 20px;
-            border-right: 2px solid rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 15px;
-            font-weight: 600;
-        }
-
-        .event-book {
-            flex: 0 0 20%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .event-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.05rem;
-            color: #2d2100;
-        }
-
-        .btn-book {
-            background: #502F56;
-            color: #FFD93D;
-            border: none;
-            border-radius: 25px;
-            padding: 12px 28px;
             font-weight: 700;
-            font-size: 1.1rem;
+        }
+        nav ul li {
+            cursor: pointer;
+            padding: 8px 16px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            border-radius: 22px;
+            color: #ddd;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        nav ul li:hover {
+            background: #fcdc3b;
+            color: #3a1d59;
+            box-shadow: 0 0 12px #fcdc3b;
+        }
+        .container {
+            max-width: 520px;
+            margin: 60px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(252, 220, 59, 0.4);
+            border: 2px solid #fcdc3b;
+            backdrop-filter: blur(10px);
+        }
+        h2 {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 8px #3a1d59;
+        }
+        form.card {
+            background: #fff;
+            padding: 28px 24px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(80, 31, 86, 0.2);
+            color: #3a1d59;
+        }
+        label { font-weight: 700; color: #501f56; }
+        .form-control {
+            border-radius: 12px;
+            border: 2px solid #501f56;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .form-control:focus {
+            border-color: #fcdc3b;
+            box-shadow: 0 0 10px #fcdc3baa;
+        }
+        button.btn-primary {
+            background: linear-gradient(45deg, #501F56, #19021C);
+            border: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            padding: 14px;
+            border-radius: 25px;
+            box-shadow: 0 8px 25px #3a1d59cc;
+            transition: all 0.3s ease;
             width: 100%;
-            max-width: 150px;
         }
-
-        .btn-book:hover {
-            background: #FFD93D;
-            color: #502F56;
-            border: 2px solid #502F56;
-            box-shadow: 0 6px 20px rgba(80, 47, 86, 0.6);
+        button.btn-primary:hover {
+            background: linear-gradient(45deg, #fcdc3b, #f0c419);
+            color: #3a1d59;
+            transform: scale(1.05);
+            box-shadow: 0 12px 38px #fcdc3bbb;
         }
-
-        @media (max-width: 768px) {
-            .event-card {
-                flex-direction: column;
-            }
-
-            .event-img,
-            .event-info,
-            .event-more,
-            .event-book {
-                flex: 0 0 auto;
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            }
-
-            .event-book {
-                border-bottom: none;
-            }
+        .modal-content {
+            background: linear-gradient(135deg, #501F56, #19021C);
+            color: #fff;
+            border: 2px solid #fcdc3b;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(252, 220, 59, 0.4);
+        }
+        .btn-gold {
+            background: linear-gradient(45deg, #fcdc3b, #f0c419);
+            color: #3a1d59;
+            font-weight: bold;
+            border-radius: 25px;
+            padding: 10px 24px;
+            border: none;
         }
     </style>
 </head>
 
 <body>
     <nav>
-        <div class="logo">
-            <img src="logo.png" alt="Logo" />
-        </div>
-        <div class="menu-toggle" id="menuToggle">
-            <span></span><span></span><span></span>
-        </div>
-        <ul id="navList">
+        <div class="logo"><img src="logo.png" alt="Logo"></div>
+        <ul>
             <li onclick="navigateTo('home.html')">Home</li>
             <li onclick="navigateTo('about.html')">About</li>
             <li onclick="navigateTo('contact.html')">Contact</li>
             <li onclick="navigateTo('review.html')">Review</li>
-            <li onclick="navigateTo('join.html')"><span class="joi">Join Us</span></li>
         </ul>
     </nav>
 
     <div class="container">
-        <h2 class="text-center text-white mb-5">catering Events</h2>
-        <div id="eventContainer"></div>
+        <h2>Add catering Event</h2>
+        <form id="eventForm" class="card">
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="dateStart">Start Date & Time</label>
+                <input type="datetime-local" id="dateStart" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="dateEnd">End Date & Time</label>
+                <input type="datetime-local" id="dateEnd" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="members">Members</label>
+                <input type="number" id="members" min="1" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount (₹)</label>
+                <input type="number" id="amount" min="1" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><h5 class="modal-title">✅ Booking Successful</h5></div>
+                <div class="modal-body text-center">
+                    <p>Your booking has been saved 🎉</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-gold" id="continueBtn">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        function navigateTo(url) {
-            window.location.href = url;
-        }
+        function navigateTo(url) { window.location.href = url; }
 
-        function formatDateTime(dtStr) {
-            if (!dtStr) return '';
-            const d = new Date(dtStr);
-            return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        }
+        document.getElementById('eventForm').addEventListener('submit', function (e) {
+            e.preventDefault();
 
-        function loadEvents() {
+            const event = {
+                location: document.getElementById('location').value.trim(),
+                dateStart: document.getElementById('dateStart').value,
+                dateEnd: document.getElementById('dateEnd').value,
+                members: parseInt(document.getElementById('members').value),
+                amount: parseFloat(document.getElementById('amount').value)
+            };
+
             const events = JSON.parse(localStorage.getItem('catering_events') || '[]');
-            const container = document.getElementById('eventContainer');
-            container.innerHTML = '';
+            events.push(event);
+            localStorage.setItem('catering_events', JSON.stringify(events));
 
-            if (events.length === 0) {
-                container.innerHTML = '<p class="text-center text-light fs-5">No events available. <a href="catering-event.html" class="text-warning"></a>.</p>';
-                return;
-            }
+            let successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
 
-            events.forEach((event, index) => {
-                const card = document.createElement('div');
-                card.className = 'event-card';
-                card.innerHTML = `
-          <div class="event-img">
-            <img src="catering logo.png" alt="Event Image" />
-          </div>
-          <div class="event-info">
-            <div class="event-item"><i class="bi bi-calendar-event"></i> ${formatDateTime(event.dateStart)}</div>
-            <div class="event-item"><i class="bi bi-calendar-event"></i> ${formatDateTime(event.dateEnd)}</div>
-            <div class="event-item"><i class="bi bi-geo-alt-fill"></i> ${event.location}</div>
-          </div>
-          <div class="event-more">
-            <div class="event-item"><i class="bi bi-people-fill"></i> ${event.members} Members</div>
-            <div class="event-item"><i class="bi bi-currency-rupee"></i> ${event.amount}</div>
-          </div>
-          <div class="event-book">
-            <button class="btn-book" onclick="window.location.href='catering-booking.html?event=${index}'">
-              Book Now
-            </button>
-          </div>`;
-                container.appendChild(card);
-            });
-        }
-
-        window.onload = loadEvents;
+            document.getElementById('continueBtn').onclick = function () {
+                window.location.href = 'home.html';
+            };
+        });
     </script>
 </body>
-
 </html>

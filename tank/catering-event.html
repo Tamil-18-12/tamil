@@ -3,15 +3,16 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Add Event - catering Event</title>
+    <title>Catering Event Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <style>
         body {
             background: linear-gradient(113deg, #501F56, #19021C);
             min-height: 100vh;
-            margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: #f1f1f1;
+            margin: 0;
             display: flex;
             flex-direction: column;
         }
@@ -62,74 +63,99 @@
             box-shadow: 0 0 12px #fcdc3b;
         }
 
-        .container {
-            max-width: 520px;
+        .events-container {
+            max-width: 720px;
             margin: 60px auto;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 40px 30px;
-            border-radius: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+            padding: 0 15px;
+        }
+
+        .main-card {
+            background: #fcdc3b;
+            border-radius: 22px;
             box-shadow: 0 15px 40px rgba(252, 220, 59, 0.4);
             border: 2px solid #fcdc3b;
-            backdrop-filter: blur(10px);
-        }
-
-        h2 {
-            text-align: center;
-            font-size: 2.4rem;
-            font-weight: 900;
-            margin-bottom: 25px;
-            text-shadow: 2px 2px 8px #3a1d59;
-        }
-
-        form.card {
-            background: #fff;
-            padding: 28px 24px;
-            border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(80, 31, 86, 0.2);
+            display: flex;
+            align-items: center;
+            padding: 30px 32px;
             color: #3a1d59;
         }
 
-        label {
+        .event-logo {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 26px;
+            border: 6px solid #fff;
+            background: #501F56;
+            box-shadow: 0 8px 32px #3a1d5999;
+        }
+
+        .event-details {
+            flex: 1;
+        }
+
+        .event-location {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .event-members {
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #501f56;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .form-control {
-            border-radius: 12px;
-            border: 2px solid #501f56;
-            font-weight: 600;
-            transition: 0.3s;
+        .event-meta {
+            font-size: 1.02rem;
+            margin-bottom: 8px;
         }
 
-        .form-control:focus {
-            border-color: #fcdc3b;
-            box-shadow: 0 0 10px #fcdc3baa;
-        }
-
-        button.btn-primary {
-            background: linear-gradient(45deg, #501F56, #19021C);
-            border: none;
-            font-weight: 700;
+        .event-amount {
             font-size: 1.2rem;
-            padding: 14px;
-            border-radius: 25px;
-            box-shadow: 0 8px 25px #3a1d59cc;
-            transition: all 0.3s ease;
-            width: 100%;
+            font-weight: 600;
+            margin-top: 8px;
+            margin-bottom: 15px;
         }
 
-        button.btn-primary:hover {
-            background: linear-gradient(45deg, #fcdc3b, #f0c419);
+        .book-btn {
+            background: #3a1d59;
+            color: #fff;
+            font-weight: 800;
+            padding: 10px 25px;
+            border-radius: 10px;
+            border: none;
+            font-size: 1rem;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .book-btn:hover {
+            background: #fcdc3b;
             color: #3a1d59;
-            transform: scale(1.05);
-            box-shadow: 0 12px 38px #fcdc3bbb;
+            box-shadow: 0 0 12px #fcdc3b;
+        }
+
+        .book-btn .arrow {
+            margin-left: 8px;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
     <nav>
-        <div class="logo"><img src="logo.png" alt="Logo"></div>
+        <div class="logo"><img src="logo.png" alt="Logo" /></div>
         <ul>
             <li onclick="navigateTo('home.html')">Home</li>
             <li onclick="navigateTo('about.html')">About</li>
@@ -138,52 +164,59 @@
         </ul>
     </nav>
 
-    <div class="container">
-        <h2>Add catering Event</h2>
-        <form id="eventForm" class="card">
-            <div class="form-group">
-                <label for="location">Location</label>
-                <input type="text" id="location" class="form-control" placeholder="Enter event location" required>
-            </div>
-            <div class="form-group">
-                <label for="dateStart">Start Date & Time</label>
-                <input type="datetime-local" id="dateStart" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="dateEnd">End Date & Time</label>
-                <input type="datetime-local" id="dateEnd" class="form-control" required>
-            </div>
-            <div class="form-group">
-                <label for="members">Members</label>
-                <input type="number" id="members" min="1" class="form-control" placeholder="Number of members" required>
-            </div>
-            <div class="form-group">
-                <label for="amount">Amount (₹)</label>
-                <input type="number" id="amount" min="1" class="form-control" placeholder="Cost of the event" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    </div>
+    <div class="events-container" id="eventsContainer"></div>
 
     <script>
         function navigateTo(url) {
             window.location.href = url;
         }
 
-        document.getElementById('eventForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const event = {
-                location: document.getElementById('location').value.trim(),
-                dateStart: document.getElementById('dateStart').value,
-                dateEnd: document.getElementById('dateEnd').value,
-                members: parseInt(document.getElementById('members').value),
-                amount: parseFloat(document.getElementById('amount').value)
-            };
+        function displayEvents() {
             const events = JSON.parse(localStorage.getItem('catering_events') || '[]');
-            events.push(event);
-            localStorage.setItem('catering_events', JSON.stringify(events));
-            window.location.href = 'catering-book.html';
-        });
+            const container = document.getElementById('eventsContainer');
+
+            if (events.length === 0) {
+                container.innerHTML = `
+          <div class="main-card">
+            <div class="event-details">
+              <h3>No events found!</h3>
+              <p class="event-meta">Please book some events first.</p>
+            </div>
+          </div>`;
+                return;
+            }
+
+            container.innerHTML = '';
+
+            // ✅ Added index to "Book Now" button
+            events.forEach((event, index) => {
+                const start = new Date(event.dateStart);
+                const end = new Date(event.dateEnd);
+                const options = {
+                    year: 'numeric', month: '2-digit', day: '2-digit',
+                    hour: 'numeric', minute: 'numeric', hour12: true
+                };
+
+                const card = document.createElement('div');
+                card.className = 'main-card';
+                card.innerHTML = `
+          <img src="logo.png" class="event-logo" alt="Event Logo" />
+          <div class="event-details">
+            <div class="event-location"><span>📍</span> ${event.location}</div>
+            <div class="event-meta">
+              Event Start: ${start.toLocaleString('en-US', options)}<br>
+              Event End: ${end.toLocaleString('en-US', options)}
+            </div>
+            <div class="event-members"><span>👤</span> Member: ${event.members}</div>
+            <div class="event-amount">₹ ${event.amount}</div>
+            <button class="book-btn" onclick="navigateTo('catering-booking.html?event=${index}')">Book Now <span class="arrow">→</span></button>
+          </div>`;
+
+                container.appendChild(card);
+            });
+        }
+
+        window.onload = displayEvents;
     </script>
 </body>
 
